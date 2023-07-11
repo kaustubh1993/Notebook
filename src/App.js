@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import AllNotes from './components/AllNotes/AllNotes';
+import Createnote from './components/CreateNote/Createnote';
 
-function App() {
+import React, { useState } from 'react'
+
+const App = () => {
+
+const [notes, setNotes] = useState([]);
+const createNote = (newNote) =>{
+  setNotes([...notes,newNote])
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container mt-3 p-3'>
+     <Createnote  createNote={createNote}/>
+     <hr/>
+     <AllNotes notes={notes}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
